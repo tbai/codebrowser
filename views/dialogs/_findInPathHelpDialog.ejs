@@ -1,0 +1,66 @@
+<div id="find-in-path-help-dialog" class="modal hide fade" style="width:830px;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Find in path</h3>
+  </div>
+  <div class="modal-body">
+    <p>You can use this button to filter results by the full path of the file. Examples:</p>
+    <table class="table table-striped">
+      <thead>
+        <tr><th>Regex</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>routes</code></td>
+          <td>
+            Any file with "routes" in the path<br/>
+            <small>
+            .../codebrowser/<strong>routes</strong>/fileRoute.js<br/>
+            .../cooktem/<strong>routes</strong>.js
+            </small>
+          </td>
+        </tr>
+        <tr>
+          <td><code>\.html</code></td>
+          <td>
+            Any html file<br/>
+            <small>
+            .../codebrowser/public/help<strong>.html</strong>
+          </small>
+          </td>
+        </tr>
+        <tr>
+          <td><code>^(?:(?!public).)+$</code></td>
+          <td>
+            Not in path. Will match any file <strong>without</strong> "public" in the path.<br/>
+            <small>
+            .../codebrowser/app.js
+          </small>
+          </td>
+        </tr>
+        <tr>
+          <td><code>public/.+/modules</code></td>
+          <td>
+            Files in public inside the modules folder.<br/>
+            <small>
+        .../codebrowser/<strong>public/javascript/modules</strong>/editor.js<br/>
+        .../cooktem/<strong>public/javascript/modules</strong>/recipe.js
+            </small>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <strong>
+              Will look in every file if the "Where (regex)..." field is blank.
+            </strong>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>

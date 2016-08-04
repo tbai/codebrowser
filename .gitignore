@@ -1,0 +1,17 @@
+logs/*
+ssl/*
+pids/*
+/node_modules
+
+#System Files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed

@@ -1,0 +1,30 @@
+var path = require("path");
+
+exports.SERVER_PORT = process.env.PORT || 3000;
+
+exports.MONGODB_CONNECTION_STR = "mongodb://localhost/codebrowser";
+
+exports.DEFAULT_REPOSITORY_ID = "57a24a406b06bb845a000001";
+
+exports.SCAN_FILES = [
+    ".json", ".js", ".ts",
+    ".css", ".scss", ".cs",
+    ".java", ".groovy", ".jsp", ".gsp", ".properties",
+    ".xml", ".xsd",
+    ".config"
+];
+
+exports.ADMIN_EMAIL = "tiagoxbai@gmail.com";
+exports.appTitle = "Code Browser - Tiago Bai";
+
+exports.SSH_OPTIONS = {
+    key: '/opt/git/CodeBrowser/ssl/server.key'
+    , cert: '/opt/git/CodeBrowser/ssl/server.crt'
+}
+
+exports.AUTH_LDAP_URL = null;
+
+// exports.ACTIVATE_AUTHENTICATION = (process.env.DISABLE_AUTH == "true") ? false : true;
+exports.ACTIVATE_AUTHENTICATION = false;
+
+console.log("Using config:\n" + JSON.stringify(exports) + "\n");

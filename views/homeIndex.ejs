@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<html>
+  <head>
+    <title><%= appTitle %></title>
+
+    <link rel='stylesheet' href='/stylesheets/lib/layout-default.css' />
+    <link rel='stylesheet' href='/stylesheets/editor.css' />
+
+    <script type="text/javascript">
+      window.showFileId = null;
+      <% if (fileId){ %>
+        window.showFileId = "<%= fileId%>";
+      <% } %>
+      window._gotoLineNumber = <%= lineNumber %>;
+      window._host = "<%=host%>";
+      window._repository = "<%=repository%>";
+    </script>
+
+    <% include _requireJs.ejs %>
+    <script type="text/javascript" src="/javascripts/homeIndex.js"></script>
+
+  </head>
+  <body >
+    <!-- Loading message -->
+    <div class="wait"><img src="/images/ajax-loader.gif"></img></div>
+
+
+    <% include dialogs/_shareFileDialog.ejs %>
+    <% include dialogs/_fileInfoDialog %>
+    <% include dialogs/_findInPathHelpDialog.ejs %>
+    <% include dialogs/_feedbackDialog.ejs %>
+
+    <!-- Center 1 -->
+    <div class="ui-layout-center hide-on-wait" style="margin:0; padding:0;">
+      <div class="ui-layout-north" style="margin:0px; padding:0;">
+        <div id="editor-top-buttons" style="margin:0px; padding:0; visibility:hidden; padding-right:5px;">
+          <ul class="nav nav-pills" style="margin:0px; overflow:hidden;">
+            <li class="active">
+              <a href="#" id="tab-filename" name="filename">...</a>
+            </li>
+            <li><a href="#" name="history">File History</a></li>
+            <li><a href="#" name="patch">Patch</a></li>
+            <li class="pull-right"><button id="share-file-button" name="share-file" class="btn btn-warning">
+              <i class="icon-share icon-white"></i> Share file</button></li>
+            <li class="pull-right"><button id="share-file-button" name="file-info" class="btn btn-info">
+              <i class="icon-info-sign icon-white"></i> File info</button></li>
+          </ul> 
+        </div>
+      </div>
+      <div class="ui-layout-center">        
+        <div id="ace-editor"></div>
+      </div>
+    </div>
+
+    <!-- Top panel -->
+    <div class="ui-layout-north hide-on-wait">
+      
+      <div style="float:right;" id="top-links">
+        <a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts" target="_blank">Keyboard Shortcuts</a>
+        <span class="link-separator">|</span>
+        <a id="feedback-link" href="#" name="feedback" target="_blank">Feedback</a>
+        <span class="link-separator">|</span>
+        <a id="feedback-link" href="/help" name="help" target="_blank">Help</a>
+        <% if (showLogout) { %> 
+        <span class="link-separator">|</span>
+        <a href="/logout" title="Logout">Logout</a>
+        <% } %>
+
+      </div>
+      <div class="pull-left">
+        <h3 class="inverse" style="margin:0px; color:#ddd;"><%= appTitle %> 
+        <!-- Repository list -->
+        <% if (repositories.length >0) { %>
+        <small class="repolist">
+          <span style="margin:0 5px;">Repositories: </span>
+          <% for (var i=0, isActive; i<repositories.length; i++){ 
+            isActive = repositories[i]._id == repository;
+          %>
+            <% if (i>0) { %>
+            <span style="margin:0 5px; color:#666;"> - </span>
+            <% } %>
+            <<%=isActive?'span':'a'%> href="/<%=repositories[i]._id%>" name="<%=repositories[i].name%>" class="<%=isActive ? 'active':''%>"><%=repositories[i].name%>
+            </<%=isActive?'span':'a'%>>
+          <% } %>
+        </small>
+        
+        <% } %>
+        </h3>
+      </div>
+    </div>
+
+    <!-- Bottom panel -->
+    <div class="ui-layout-south hide-on-wait" style="overflow:hidden;">
+      <form id="search-bar" class="form-inline" style="margin-bottom:0;">
+        <span class="variable-width">
+          <button type="button" class="btn btn-inverse" data-toggle="button" name="regex" 
+            title="RegExp Search">.*</button>
+          <button type="button" class="btn btn-inverse" data-toggle="button" name="case-sensitive" 
+            title="Case Sensitive Search">Aa</button>
+          <button type="button" class="btn btn-inverse" data-toggle="button" name="whole-word"
+            title="Whole Word Search">\b</button>
+        </span>
+        <!-- Search query -->
+        <input id="text-search-input" type="text" placeholder="Find text…" style="width:10px;"></input>
+
+        <span class="variable-width">
+          <button type="button" class="btn btn-inverse" name="find">Find</button>
+          <button type="button" class="btn btn-inverse" name="find-all">Find all</button>
+          <!--<button type="button" class="btn btn-inverse" name="find-in-folder">Find everywhere</button>-->
+          
+          <!-- Find in files -->
+          <button type="button" class="btn btn-success" name="find-in-files"><i class="icon-arrow-up icon-white"></i>
+            Find in file(s)</button>            
+          <input class="span3" id="find-in-path-field" type="text" placeholder="Where (regex)...">
+          <!-- find in path-->
+          <div class="btn-group dropup">
+            <button  type="button" class="btn btn-inverse" name="find-in-folder" id="find-in-path-button" style="width:150px;">
+              Find everywhere
+            </button>
+            <a class="btn btn-inverse dropdown-toggle" data-toggle="modal" href="#find-in-path-help-dialog">
+              <i class="icon-question-sign icon-white"></i>
+            </a>             
+          </div>
+        </span>
+      </form>
+    </div>
+
+    <!-- Left panel -->
+    <div class="ui-layout-west hide-on-wait">
+      <div id="file-list-module">
+        <form name="quickopen" id="quickopenform" class="form-search" style="margin-bottom:0;">
+          <!--<div class="input-prepend">
+            <span class="add-on"><i class="icon-search"></i></span>-->
+            <input id="quickopen" type="text" class="search-query" placeholder="Open file…" style="width:90%;"></input>
+          <!--</div>-->
+          <div id="quickopen-loadingbar" style="height:10px;margin-top:2px; text-align:center; overflow:hidden; padding:0; visibility:hidden;">
+            <img height="10" src="/images/loadingbar-thin.gif" style="vertical-align:top;"></img>
+          </div>
+        </form>
+        <div id="file-list" class="file-list">
+
+          <!--
+          <div class="file-item">
+            <a class="close-file">X</a>
+            <span class="file-name">arquivo01.js</span>
+          </div>-->
+          
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

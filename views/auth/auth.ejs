@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<html>
+  <head>
+    <title>
+      <% var titleMap = {
+         loginForm:"Login"
+        ,loginSuccess:"Login"
+        ,registerForm:"Registration"
+        ,registerSuccess:"Registration"
+        ,message:"Info"
+      } %>
+      <%= appTitle %> - <%= titleMap[template] %>
+    </title>
+
+    <% // aux functions
+      function fieldValue(fieldname){
+        var value = "";
+        if (typeof formAttributes != "undefined" && formAttributes[fieldname]){
+          value = formAttributes[fieldname];
+        }
+        return value;
+      }
+    %>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      body{
+        text-align:center;
+        padding-top:5%;
+      }      
+      .login-box{
+        color:#333;
+        text-align:center;        
+        border-radius: 5px;
+        padding:2em;
+        width:350px;
+        margin:auto;
+        border:solid whitesmoke 1px;
+        background:whitesmoke;
+      }
+      .login-box a{
+        color:#666;
+        font-size:12px;
+      }       
+    </style>
+
+    <% include ../_requireJs.ejs %>
+    <script type="text/javascript" src="/javascripts/authForms.js"></script>
+    <script type="text/javascript">
+      var _formError = false;
+      <% if ( typeof formError != "undefined" ) { %>
+        _formError = <%- JSON.stringify(formError)%>
+      <% } %>
+    </script>
+
+
+  </head>
+  <body>
+   
+    <div class="login-box" id="login-box">
+      <h1><%=appTitle%></h1>
+      <br/>
+      <br/>
+      <div id="authTemplateEl">
+        <% if (template == "message") { %>
+          <% include  _message.ejs %>
+        <% } else { %>
+          <% include  _loginForm.ejs %>
+        <% } %>
+      </div>
+      <br/>
+    </div>
+  </body>
+</html>

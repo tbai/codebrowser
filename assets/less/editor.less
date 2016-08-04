@@ -1,0 +1,91 @@
+@import 'style';
+
+.wait { display:block; text-align:center; padding-top:10px; }
+.hide-on-wait { visibility:hidden; }
+
+.rendered .wait { display:none; }
+.rendered .hide-on-wait { visibility:visible; }
+
+#ace-editor { 
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.ui-layout-pane{
+	color:@textColor;
+	background:@bodyBackground;
+	border-color:transparent;
+}
+
+.ui-layout-resizer {
+	background: #272822;
+	border: 1px solid #272822;
+	border-width: 0;
+}
+
+.ui-layout-toggler {
+	border: 1px solid @bodyBackground;
+	background-color: @bodyBackground;
+}
+
+.ui-layout-west{
+	background:whitesmoke;
+	color:#333;
+}
+.ui-layout-resizer-west{
+	z-index:-1;
+}
+
+.ui-layout-pane-south{
+	padding:0 2px;
+}
+
+/* File list */
+.file-list{
+	font-size:13px;
+}
+.close-file{
+	font-weight:bold;
+	cursor:pointer;
+	text-decoration: none;
+	color:#999;
+	padding:2px 5px;
+	font-family:arial;
+}
+.close-file:hover{
+	color:red;
+	text-decoration: none;
+}
+.file-item{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	border-radius:5px;
+	padding:1px 0;
+}
+.file-item:hover{
+	background:#ccc;
+	cursor:pointer;
+}
+
+#ace-editor .ace_info {
+	background-color: black;
+	font-weight: bold;
+	color: #F92672;
+}
+
+.file-list .active{
+	font-weight:bold;
+}
+
+.modal{
+	color:#333;
+}
+
+textarea:focus, 
+input:focus{
+	outline:none 0px;
+}
