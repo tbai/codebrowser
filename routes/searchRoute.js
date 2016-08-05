@@ -1,6 +1,5 @@
 var http = require("http")
   , db = require("../models/db")
-	 , $ = require("jquery")
   , util = require("util")
   , repositoryService = require("../lib/repositoryService");
 
