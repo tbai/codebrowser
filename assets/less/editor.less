@@ -6,7 +6,7 @@
 .rendered .wait { display:none; }
 .rendered .hide-on-wait { visibility:visible; }
 
-#ace-editor { 
+#ace-editor {
     position: absolute;
     top: 0;
     right: 0;
@@ -46,6 +46,7 @@
 /* File list */
 .file-list{
 	font-size:13px;
+
 }
 .close-file{
 	font-weight:bold;
@@ -54,10 +55,13 @@
 	color:#999;
 	padding:2px 5px;
 	font-family:arial;
+  display: inline-block;
+  transition: transform .1s ease-out;
 }
 .close-file:hover{
-	color:red;
+	color:black;
 	text-decoration: none;
+  transform: scale(1.2, 1.2);
 }
 .file-item{
 	overflow:hidden;
@@ -65,9 +69,11 @@
 	white-space: nowrap;
 	border-radius:5px;
 	padding:1px 0;
+
+  transition: background .2s ease-out;
 }
 .file-item:hover{
-	background:#ccc;
+	background-color: #ddd;
 	cursor:pointer;
 }
 
@@ -85,7 +91,7 @@
 	color:#333;
 }
 
-textarea:focus, 
+textarea:focus,
 input:focus{
 	outline:none 0px;
 }

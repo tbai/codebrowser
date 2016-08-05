@@ -5340,10 +5340,13 @@ input[type=password]:focus {
   color: #999;
   padding: 2px 5px;
   font-family: arial;
+  display: inline-block;
+  transition: transform 0.1s ease-out;
 }
 .close-file:hover {
-  color: red;
+  color: black;
   text-decoration: none;
+  transform: scale(1.2, 1.2);
 }
 .file-item {
   overflow: hidden;
@@ -5351,9 +5354,10 @@ input[type=password]:focus {
   white-space: nowrap;
   border-radius: 5px;
   padding: 1px 0;
+  transition: background 0.2s ease-out;
 }
 .file-item:hover {
-  background: #ccc;
+  background-color: #ddd;
   cursor: pointer;
 }
 #ace-editor .ace_info {

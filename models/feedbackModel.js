@@ -2,15 +2,15 @@
  *
  */
 
-var mongoose = require('mongoose')
-  , Schema = mongoose.Schema
-  , ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
 
 
 var feedbackSchema = new Schema({
-  email: { type: String }
-  , text: String
-  , datesCreated: { type: Date, default: Date.now() }
+  email: { type: String },
+  text: String,
+  datesCreated: { type: Date, default: Date.now() }
 });
 
 

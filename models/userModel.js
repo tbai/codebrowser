@@ -2,19 +2,21 @@
  *
  */
 
-var mongoose = require('mongoose')
-  , Schema = mongoose.Schema
-  , ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
 
 
 var userStatus = [
-  'created' // created but not activated
-  , 'active' // active
-  , 'blocked' // user was blocked by the system
+  'created', // created but not activated
+  'active', // active
+  'blocked' // user was blocked by the system
 ];
+
+
 var userSchema = new Schema({
-  email: { type: String, lowercase: true, index: { unique: true } }
-  , status: { type: String, enum: userStatus, default: "created" }
+  email: { type: String, lowercase: true, index: { unique: true } },
+  status: { type: String, enum: userStatus, default: "created" }
 });
 
 userSchema.pre("validate", function (next, done) {

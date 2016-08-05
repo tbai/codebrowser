@@ -1,5 +1,5 @@
 /**
- * How to use:
+ *  How to use:
  * 		editor = new EditorModule(id, model);
  */
 
@@ -14,9 +14,9 @@ define(
   ],
   function (asciiart, utils) {
     /**
-       * Constructor
-       * @param id The element id
-       * @param model
+     * Constructor
+     * @param id The element id
+     * @param model
      */
     return function (id) {
       var $el = $("#" + id),

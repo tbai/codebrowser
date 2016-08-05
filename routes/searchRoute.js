@@ -12,7 +12,7 @@ exports.filename = function (req, res) {
   var regex = new RegExp(query.replace(/\./g, '\\.').replace(/\*/g, '.+'), "i");
 
   console.info("Quickopen query(" + (req.user && req.user.email ? req.user.email : "unknown user") + "):" + query + " repo:" + repoid);
-  db.File.find({ basename: regex, _repository: repoid }, { displaypath: 1 }, (error, list) => {
+  db.File.find({ displaypath: regex, _repository: repoid }, { displaypath: 1 }, (error, list) => {
     var result = { error: error };
     result.total = list.total;
     result.list = [];
