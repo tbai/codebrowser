@@ -20,33 +20,41 @@ mongoose.connect(config.MONGODB_CONNECTION_STR)
 
 
 
-// repositoryService.createRepository({
-//     name: "codebrowser",
-//     path: "/Users/baitiag.AUTH/git/codebrowser_repository/codebrowser",
-//     scanfolders: [""],
-//     ignoreFolders: [
-//       "node_modules",
-//       "public/bootstrap",
-//       "public/javascripts/lib",
-//       "public/javascripts/require",
-//       "public/javascripts/text",
-//       ".vscode"
-//     ]
-// });
+repositoryService.createRepository({
+    name: "codebrowser",
+    path: "/opt/repositories/codebrowser",
+    scanfolders: [""],
+    ignoreFolders: [
+      "node_modules",
+      "public/bootstrap",
+      "public/javascripts/lib",
+      "public/javascripts/require",
+      "public/javascripts/text",
+      ".vscode"
+    ]
+});
+
+repositoryService.createRepository({
+    name: "cooktem",
+    path: "/opt/repositories/cooktem",
+    scanfolders: [""],
+    ignoreFolders: []
+});
 
 
 
-  repositoryService.scanAll().then(
-      success => {
-          console.log("success");
-          process.exit(0);
-      },
 
-      error => {
-          console.error(error);
-          process.exit(1);
-      }
-  );
+  // repositoryService.scanAll().then(
+  //     success => {
+  //         console.log("success");
+  //         process.exit(0);
+  //     },
+
+  //     error => {
+  //         console.error(error);
+  //         process.exit(1);
+  //     }
+  // );
 
 
 // create users
