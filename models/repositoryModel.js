@@ -7,15 +7,16 @@ var repositorySchema = new Schema({
 	 name: {type:String, index:{unique:true}}
 	 // Git folder path, this is the base for git commands. 
 	 // E.g. "/opt/git/codebrowser"
-    ,path: {type:String} 
+    , path: {type:String} 
      // List of folders to read. e.g. ["models", "routes", "views"]
      // One empty string will scan all folders. e.g: [""]
-    ,scanfolders:[]
+    , scanfolders:[]
+    , ignoreFolders:[]
 
     // Remote branch, e.g.: github
-    ,remoteBranch:String
+    , remoteBranch:String
 
-    ,lastUpdated:Date
+    , lastUpdated:Date
 });
 
 module.exports = mongoose.model('Repository', repositorySchema);
