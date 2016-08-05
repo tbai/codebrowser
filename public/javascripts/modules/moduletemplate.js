@@ -4,38 +4,38 @@
  */
 
 define(
-// dependencies
-["lib/jquery", "/javascripts/client-utils.js"], 
-function (jquery, utils) {
-	/**  
- 	 * Constructor
- 	 * @param id The element id
-	 */
-	return function(id){
-		var $el = $("#" + id),
-		el = document.getElementById(id);
+  // dependencies
+  ["lib/jquery", "/javascripts/client-utils.js"],
+  function (jquery, utils) {
+    /**
+       * Constructor
+       * @param id The element id
+     */
+    return function (id) {
+      var $el = $("#" + id),
+        el = document.getElementById(id);
 
-		var that = {
-			$el:$el,
-			el:el,
+      var that = {
+        $el: $el,
+        el: el,
 
-			init: function(){
+        init: function () {
 
-			},
+        },
 
-			initEvents: function(){
+        initEvents: function () {
 
-			},
+        },
 
-			update: function(model){
+        update: function (model) {
 
-			}
-		};
+        }
+      };
 
-		that.init();
-		that.initEvents();
+      that.init();
+      that.initEvents();
 
-		return that;
-	} // Constructor
+      return that;
+    } // Constructor
 
-}); // define 
+  }); // define

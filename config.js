@@ -7,8 +7,8 @@ exports.MONGODB_CONNECTION_STR = "mongodb://localhost/codebrowser";
 exports.DEFAULT_REPOSITORY_ID = "57a24a406b06bb845a000001";
 
 exports.SCAN_FILES = [
-    ".json", ".js", ".ts",
-    ".css", ".scss", ".cs",
+    ".json", ".js", ".ts", ".ejs",
+    ".css", ".scss", ".cs", ".less",
     ".java", ".groovy", ".jsp", ".gsp", ".properties",
     ".xml", ".xsd",
     ".config"
