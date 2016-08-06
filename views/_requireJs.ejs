@@ -3,14 +3,15 @@
 	requirejs.config({
         baseUrl:"/javascripts",
 
-        paths: { 
+        paths: {
             jquery:'lib/jquery'
             ,jqueryLayout:'lib/jquery.layout'
             ,ejs:'/javascripts/lib/ejs'
-            ,bootstrap:'lib/bootstrap.min' 
+            ,bootstrap:'lib/bootstrap.min'
             ,clientUtils:"/javascripts/clientUtils"
             ,diffMatchPatch:"/javascripts/lib/google-diff-match-patch/diff_match_patch"
-            ,ace:"lib/ace/src-min/ace"
+            // ,ace:"lib/ace/src-min/ace"
+            ,ace:"/ace-builds/src-min/ace"
             ,jqueryCookie:"lib/jquery.cookie"
             ,jqueryUi:"lib/jquery-ui"
         },
@@ -30,7 +31,7 @@
             },
             bootstrap : {
                 // bootstrap button conflicts with jqueryUi, but it works if we load jqueryUi first
-                deps:["jquery", "jqueryUi"] 
+                deps:["jquery", "jqueryUi"]
             },
             ejs: {
                 deps:['jquery'],

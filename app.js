@@ -1,7 +1,7 @@
 
 /**
  * Module dependencies.
- */ 
+ */
 var express = require('express')
   , https = require('https')
   , http = require('http')
@@ -18,7 +18,7 @@ var express = require('express')
 // connect to Mongo when the app initializes
 var mongoose = require('mongoose')
 mongoose.connect(config.MONGODB_CONNECTION_STR);
- 
+
 var app = express();
 
 // all environments
@@ -36,7 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use(function(req, res, next){  
+app.use(function(req, res, next){
   res.locals.appTitle = config.appTitle;
   next();
 });
@@ -58,6 +58,7 @@ app.use(less({
 app.use('/img', express['static'](path.join(bootstrapPath, 'img')));
 app.use('/javascripts/lib', express['static'](path.join(bootstrapPath, '/docs/assets/js')));
 app.use(express['static'](path.join(__dirname, 'public')));
+app.use('/ace-builds', express['static'](path.join(__dirname, 'node_modules/ace-builds')));
 
 
 // development only
@@ -69,7 +70,7 @@ if ('development' == app.get('env')) {
 urlMappings.setup(app);
 
 // production mode using https
-if (app.get('port') == 443) { 
+if (app.get('port') == 443) {
     try{
       var options = {
         key: fs.readFileSync(config.SSH_OPTIONS.key),
@@ -99,7 +100,7 @@ if (app.get('port') == 443) {
       console.log(e);
     }
 // development mode
-} else { 
+} else {
     http.createServer(app).listen(app.get('port'), function(){
         console.log('Server listening on port ' + app.get('port'));
     });

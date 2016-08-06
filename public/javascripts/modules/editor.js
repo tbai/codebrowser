@@ -24,7 +24,7 @@ define(
 
 
       var editor = ace.edit(id);
-      editor.setFontSize(14);
+      editor.setFontSize(12);
       editor.setTheme("ace/theme/monokai");
       editor.getSession().setMode("ace/mode/text");
       editor.setValue(helpText + asciiart);
@@ -41,8 +41,8 @@ define(
         _editor: editor,
         _modes: { // map file extension to mode name used in ece editor
           ".xsd": "xml", ".xml": "xml", ".xsl": "xml", ".config": "xml",  ".cs": "csharp", ".c": "c_cpp", ".h": "c_cpp",
-          ".cpp": "c_cpp", ".make": "makefile", ".js": "javascript", ".ts": "javascript", ".json": "json", ".css": "css", ".scss": "css",
-           ".less": "css", ".vm": "xml", ".ejs": "html", ".jsp": "html", ".gsp": "html"
+          ".cpp": "c_cpp", ".make": "makefile", ".js": "javascript", ".ts": "typescript", ".json": "json", ".css": "css", ".scss": "css",
+           ".less": "css", ".vm": "xml", ".ejs": "ejs", ".jsp": "jsp", ".gsp": "gsp"
         },
 
         init: function () {

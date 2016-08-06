@@ -9,6 +9,7 @@
     "sync": "node jobs/scanFilesJob.js"
   },
   "dependencies": {
+    "ace-builds": "^1.2.2",
     "connect-flash": "0.1.1",
     "ejs": "0.8.4",
     "express": "3.2.4",
@@ -19,5 +20,8 @@
     "passport": "0.1.17",
     "passport-local": "0.1.6",
     "password-hash": "1.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
   }
 }

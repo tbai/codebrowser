@@ -15,7 +15,7 @@ exports.SCAN_FILES = [
 ];
 
 exports.ADMIN_EMAIL = "tiagoxbai@gmail.com";
-exports.appTitle = "Code Browser - Tiago Bai";
+exports.appTitle = "Tiago Bai - Code Browser";
 
 exports.SSH_OPTIONS = {
     key: '/opt/git/CodeBrowser/ssl/server.key'

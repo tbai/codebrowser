@@ -41,6 +41,13 @@ repositoryService.createRepository({
     ignoreFolders: []
 });
 
+repositoryService.createRepository({
+    name: "resume",
+    path: "/opt/repositories/resume",
+    scanfolders: [""],
+    ignoreFolders: []
+});
+
 
 
 
