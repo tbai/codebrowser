@@ -24,7 +24,7 @@ define(
 
 
       var editor = ace.edit(id);
-      editor.setFontSize(12);
+      editor.setFontSize(16);
       editor.setTheme("ace/theme/monokai");
       editor.getSession().setMode("ace/mode/text");
       editor.setValue(helpText + asciiart);
