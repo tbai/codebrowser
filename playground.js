@@ -18,7 +18,7 @@ var express = require('express')
 var mongoose = require('mongoose')
 mongoose.connect(config.MONGODB_CONNECTION_STR)
 
-
+/*
 
 repositoryService.createRepository({
     name: "codebrowser",
@@ -48,7 +48,7 @@ repositoryService.createRepository({
     ignoreFolders: []
 });
 
-
+*/
 
 
   // repositoryService.scanAll().then(

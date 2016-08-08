@@ -31,15 +31,17 @@ function scanFilesJob(){
         process.exit(1); // exit with error
       } else {
         console.log("Scanning folders...");
-        repositoryService.scanAll(function(scanError){
-          if(scanError){
-            console.error(scanError);
-            process.exit(1); // exit with error
-          } else {
+        repositoryService.scanAll().then(
+          success => {
             console.log("DB updated at " + new Date());
             isUpdating = false;
+          },
+          scanError => {
+            console.error(scanError);
+            process.exit(1); // exit with error
           }
-        });
+        );
+
       }
     });
 
