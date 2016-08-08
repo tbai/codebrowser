@@ -6,7 +6,7 @@
     "start": "node app.js",
     "prod": "PORT=80 pm2 start app.js",
     "dev": "nodemon -w app -w lib -w views -w views/auth -w assets/less -w routes --max-old-space-size=1000 app.js",
-    "sync": "node jobs/scanFilesJob.js"
+    "sync": "pm2 start jobs/scanFilesJob.js"
   },
   "dependencies": {
     "ace-builds": "^1.2.2",
