@@ -7,11 +7,14 @@ var http = require("http")
 
 exports.filename = function (req, res) {
   var query = req.param("q");
-  var repoid = req.param("repoid") ? req.param("repoid") : repositoryService.getCurrentRepositoryId(req);
+  var repoid = repositoryService.getCurrentRepositoryId(req);
   var regex = new RegExp(query.replace(/\./g, '\\.').replace(/\*/g, '.+'), "i");
+  var queryMap = { displaypath: regex };
+  if (repoid)
+    queryMap._repository = repoid;
 
   console.info("Quickopen query(" + (req.user && req.user.email ? req.user.email : "unknown user") + "):" + query + " repo:" + repoid);
-  db.File.find({ displaypath: regex, _repository: repoid }, { displaypath: 1 }, (error, list) => {
+  db.File.find( queryMap, { displaypath: 1 }, (error, list) => {
     var result = { error: error };
     result.total = list.total;
     result.list = [];
@@ -31,9 +34,9 @@ exports.filename = function (req, res) {
 
 exports.text = function (req, res) {
   var query = req.param("query");
-  var repoid = repositoryService.getCurrentRepositoryId(req);
+  var repository = repositoryService.getCurrentRepositoryId(req);
   util.debug("search text(" + (req.user && req.user.email ? req.user.email : "unknown user") + "):" + query +
-    " repoid=" + repoid +
+    " repository=" + repository +
     " inPath=" + req.param("inPath") +
     " regExp=" + req.param("regExp") +
     " caseSensitive=" + req.param("caseSensitive") +
@@ -53,7 +56,10 @@ exports.text = function (req, res) {
   }
 
   var regex = new RegExp(findQuery, regexOptions);
-  var queryMap = { text: regex, _repository: repoid };
+  var queryMap = { text: regex };
+  if (repoid)
+    queryMap._repository = repoid;
+
   if (req.param("inPath")) {
     queryMap.displaypath = new RegExp(req.param("inPath"), "i");
   }

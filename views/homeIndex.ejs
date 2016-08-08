@@ -45,46 +45,46 @@
               <i class="icon-share icon-white"></i> Share file</button></li>
             <li class="pull-right"><button id="share-file-button" name="file-info" class="btn btn-info">
               <i class="icon-info-sign icon-white"></i> File info</button></li>
-          </ul> 
+          </ul>
         </div>
       </div>
-      <div class="ui-layout-center">        
+      <div class="ui-layout-center">
         <div id="ace-editor"></div>
       </div>
     </div>
 
     <!-- Top panel -->
     <div class="ui-layout-north hide-on-wait">
-      
+
       <div style="float:right;" id="top-links">
         <a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts" target="_blank">Keyboard Shortcuts</a>
         <span class="link-separator">|</span>
         <a id="feedback-link" href="#" name="feedback" target="_blank">Feedback</a>
         <span class="link-separator">|</span>
         <a id="feedback-link" href="/help" name="help" target="_blank">Help</a>
-        <% if (showLogout) { %> 
+        <% if (showLogout) { %>
         <span class="link-separator">|</span>
         <a href="/logout" title="Logout">Logout</a>
         <% } %>
 
       </div>
       <div class="pull-left">
-        <h3 class="inverse" style="margin:0px; color:#ddd;"><%= appTitle %> 
+        <h3 class="inverse" style="margin:0px; color:#ddd;"><%= appTitle %>
         <!-- Repository list -->
         <% if (repositories.length >0) { %>
         <small class="repolist">
           <span style="margin:0 5px;">Repositories: </span>
-          <% for (var i=0, isActive; i<repositories.length; i++){ 
+          <% for (var i=0, isActive; i<repositories.length; i++){
             isActive = repositories[i]._id == repository;
           %>
             <% if (i>0) { %>
             <span style="margin:0 5px; color:#666;"> - </span>
             <% } %>
-            <<%=isActive?'span':'a'%> href="/<%=repositories[i]._id%>" name="<%=repositories[i].name%>" class="<%=isActive ? 'active':''%>"><%=repositories[i].name%>
+            <<%=isActive?'span':'a'%> href="/<%=repositories[i].name%>" name="<%=repositories[i].name%>" class="<%=isActive ? 'active':''%>"><%=repositories[i].name%>
             </<%=isActive?'span':'a'%>>
           <% } %>
         </small>
-        
+
         <% } %>
         </h3>
       </div>
@@ -94,9 +94,9 @@
     <div class="ui-layout-south hide-on-wait" style="overflow:hidden;">
       <form id="search-bar" class="form-inline" style="margin-bottom:0;">
         <span class="variable-width">
-          <button type="button" class="btn btn-inverse" data-toggle="button" name="regex" 
+          <button type="button" class="btn btn-inverse" data-toggle="button" name="regex"
             title="RegExp Search">.*</button>
-          <button type="button" class="btn btn-inverse" data-toggle="button" name="case-sensitive" 
+          <button type="button" class="btn btn-inverse" data-toggle="button" name="case-sensitive"
             title="Case Sensitive Search">Aa</button>
           <button type="button" class="btn btn-inverse" data-toggle="button" name="whole-word"
             title="Whole Word Search">\b</button>
@@ -108,10 +108,10 @@
           <button type="button" class="btn btn-inverse" name="find">Find</button>
           <button type="button" class="btn btn-inverse" name="find-all">Find all</button>
           <!--<button type="button" class="btn btn-inverse" name="find-in-folder">Find everywhere</button>-->
-          
+
           <!-- Find in files -->
           <button type="button" class="btn btn-success" name="find-in-files"><i class="icon-arrow-up icon-white"></i>
-            Find in file(s)</button>            
+            Find in file(s)</button>
           <input class="span3" id="find-in-path-field" type="text" placeholder="Where (regex)...">
           <!-- find in path-->
           <div class="btn-group dropup">
@@ -120,7 +120,7 @@
             </button>
             <a class="btn btn-inverse dropdown-toggle" data-toggle="modal" href="#find-in-path-help-dialog">
               <i class="icon-question-sign icon-white"></i>
-            </a>             
+            </a>
           </div>
         </span>
       </form>
@@ -145,8 +145,8 @@
             <a class="close-file">X</a>
             <span class="file-name">arquivo01.js</span>
           </div>-->
-          
-          
+
+
         </div>
       </div>
     </div>

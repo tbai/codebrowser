@@ -15,16 +15,16 @@ exports.setup = function(app){
 // Place your application urls here
 function setupAppUrls(app){
     // file
-    app.get('/file/get',                  isAuthenticated, routes.file.get);    
+    app.get('/file/get',                  isAuthenticated, routes.file.get);
     app.get('/file/:id/history',          isAuthenticated, routes.file.history);
     app.get('/file/:id/completehistory',  isAuthenticated, routes.file.completehistory);
 
-    // search    
+    // search
     app.get('/search/filename',           isAuthenticated, routes.search.filename);
     app.get('/search/text',               isAuthenticated, routes.search.text);
     app.get('/search/filename/:q',        isAuthenticated, routes.search.filename);
-    app.get('/search/repo/:repoid/filename/:q', isAuthenticated, routes.search.filename);
-    
+    app.get('/search/repo/:repository/filename/:q', isAuthenticated, routes.search.filename);
+
     // feedback
     app.post('/user/feedback',             isAuthenticated, routes.home.feedback);
 
@@ -33,7 +33,7 @@ function setupAppUrls(app){
     app.get('/help',                      routes.home.help);
     app.get('/:repository',               isAuthenticated, routes.home.index);
     app.get('/',                          isAuthenticated, routes.home.index);
-    
+
 }
 
 // Authentication urls
