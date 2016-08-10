@@ -95,19 +95,23 @@ exports.completehistory = function (req, res) {
 
 exports.get = function (req, res) {
 
-  if (req.param("id")) {
-    var id = req.param("id");
-    db.File.findOne({ _id: id }).populate("_repository").exec(function (error, file) {
-      console.info("Get file(" + (req.user && req.user.email ? req.user.email : "unknown user") + "):" + file.basename);
-      res.json({ error: error, file: file });
-    });
+  try {
+    if (req.param("id")) {
+      var id = req.param("id");
+      db.File.findOne({ _id: id }).populate("_repository").exec(function (error, file) {
+        console.info("Get file(" + (req.user && req.user.email ? req.user.email : "unknown user") + "):" + file.basename);
+        res.json({ error: error, file: file });
+      });
 
-  } else if (req.param("displaypath")) {
-    var displaypath = req.param("displaypath");
-    db.File.findOne({ displaypath: displaypath }).populate("_repository").exec(function (error, file) {
-      console.info("Get file(" + (req.user && req.user.email ? req.user.email : "unknown user") + "):" + file.basename);
-      res.json({ error: error, file: file });
-    });
+    } else if (req.param("displaypath")) {
+      var displaypath = req.param("displaypath");
+      db.File.findOne({ displaypath: displaypath }).populate("_repository").exec(function (error, file) {
+        console.info("Get file(" + (req.user && req.user.email ? req.user.email : "unknown user") + "):" + file.basename);
+        res.json({ error: error, file: file });
+      });
+    }
+  } catch (error) {
+    res.json({ error: error });
   }
 
 };
