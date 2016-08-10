@@ -6,13 +6,13 @@
 define(
   // dependencies
   [
-    "text!/javascripts/lib/asciiart_0" + asciiartNumber + ".txt",
+    "text!/text/introduction.txt",
     "clientUtils",
     "modules/editableModel",
     "jquery",
     'ace'
   ],
-  function (asciiart, utils) {
+  function (introductionText, utils) {
     /**
      * Constructor
      * @param id The element id
@@ -27,7 +27,7 @@ define(
       editor.setFontSize(16);
       editor.setTheme("ace/theme/monokai");
       editor.getSession().setMode("ace/mode/text");
-      editor.setValue(helpText + asciiart);
+      editor.setValue(introductionText);
       editor.gotoLine(0);
       var _emptyEditSession = editor.getSession();
 

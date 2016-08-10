@@ -9,12 +9,6 @@
 	- save history in db - delete object when reindex
 	- Search in folder using options
 */
-var asciiartNumber = parseInt(Math.random() * 10) % 6 + 1;
-var helpText = '\n' +
-  '\n' +
-  '<-- Use the left panel to open files from the repositories' +
-  '\n';
-
 requirejs([
   'jquery'
   , "clientUtils"

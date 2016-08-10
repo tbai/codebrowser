@@ -1,0 +1,29 @@
+
+
+<-- Use the left panel to open files from the repositories
+
+
+
+********************************************************************************
+
+
+Hello,
+
+
+
+I built this system to make it easy to find pieces of code from large
+repositories. It is realy fast to find and open files or to find specific
+content from large git repositories.
+
+There is a video on the help page showing some usage examples.
+
+The code for this project is available at github:
+https://github.com/tbai/codebrowser
+
+
+
+-Tiago Bai
+ tiagoxbai@gmail.com
+
+
+********************************************************************************
