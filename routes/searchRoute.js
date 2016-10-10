@@ -57,6 +57,7 @@ exports.text = function (req, res) {
 
   var regex = new RegExp(findQuery, regexOptions);
   var queryMap = { text: regex };
+  var repoid = repositoryService.getCurrentRepositoryId(req);
   if (repoid)
     queryMap._repository = repoid;
 
